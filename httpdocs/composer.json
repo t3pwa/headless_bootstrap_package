@@ -1,0 +1,75 @@
+{
+	"repositories": [
+		{ "type": "composer", "url": "https://composer.typo3.org/" },
+		{
+			"type": "path",
+			"url": "packages/*"
+		},
+
+		{
+			"type": "git",
+			"url": "https://github.com/itplusx/headless_gridelements.git"
+		}
+	],
+
+	"autoload": {
+		"psr-4": {
+			"bfn\\Cites\\": "public/typo3conf/ext/cites/Classes/",
+			"bfn\\cites-filter\\": "public/typo3conf/ext/cites/Classes/"
+		}
+	},
+
+	"name": "typo3/cms-base-distribution",
+	"description" : "TYPO3 CMS Base Distribution",
+	"license": "GPL-2.0-or-later",
+	"config": {
+		"platform": {
+			"php": "7.2"
+		}
+	},
+	"minimum-stability": "dev",
+	"prefer-stable": false,
+	"require": {
+		"typo3/cms-backend": "10.4.x-dev",
+		"typo3/cms-core": "10.4.x-dev",
+		"typo3/cms-extbase": "10.4.x-dev",
+		"typo3/cms-extensionmanager": "10.4.x-dev",
+		"typo3/cms-filelist": "10.4.x-dev",
+		"typo3/cms-fluid": "10.4.x-dev",
+		"typo3/cms-frontend": "10.4.x-dev",
+		"typo3/cms-install": "10.4.x-dev",
+		"typo3/cms-recordlist": "10.4.x-dev",
+		"typo3/cms-about": "10.4.x-dev",
+		"typo3/cms-belog": "10.4.x-dev",
+		"typo3/cms-beuser": "10.4.x-dev",
+		"typo3/cms-felogin": "10.4.x-dev",
+		"typo3/cms-fluid-styled-content": "10.4.x-dev",
+		"typo3/cms-form": "10.4.x-dev",
+		"typo3/cms-impexp": "10.4.x-dev",
+		"typo3/cms-info": "10.4.x-dev",
+		"typo3/cms-rte-ckeditor": "10.4.x-dev",
+		"typo3/cms-setup": "10.4.x-dev",
+		"typo3/cms-seo": "10.4.x-dev",
+		"typo3/cms-sys-note": "10.4.x-dev",
+		"typo3/cms-t3editor": "10.4.x-dev",
+		"typo3/cms-tstemplate": "10.4.x-dev",
+		"typo3/cms-viewpage": "10.4.x-dev",
+
+		"georgringer/news": "^8.6",
+
+		"friendsoftypo3/headless": "2.0.3",
+		"friendsoftypo3/headless_news": "1.0.2",
+
+		"extcode/cart": "v7.4.9",
+		"extcode/cart-products": "v3.1.1",
+		"friendsoftypo3/headless_bootstrap_package": "dev-master",
+		"bk2k/bootstrap-package": "12.0.x-dev",
+		"yoast-seo-for-typo3/yoast_seo": "v10.x-dev",
+		"laxap/bootstrap-grids": "dev-master",
+		"typo3/cms-indexed-search": "10.4.x-dev",
+		"itplusx/headless-gridelements": "dev-master"
+
+
+
+	}
+}
