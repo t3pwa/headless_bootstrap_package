@@ -1,0 +1,280 @@
+## Include helpers from Headless Package
+<INCLUDE_TYPOSCRIPT: source="DIR:EXT:headless/Configuration/TypoScript/Helper/" extensions="typoscript">
+## Include content elements
+<INCLUDE_TYPOSCRIPT: source="DIR:EXT:headless/Configuration/TypoScript/ContentElement/" extensions="typoscript">
+## Include configuration
+<INCLUDE_TYPOSCRIPT: source="DIR:EXT:headless/Configuration/TypoScript/Configuration/" extensions="typoscript">
+
+## Include helpers from Bootstrap Package
+#<INCLUDE_TYPOSCRIPT: source="DIR:EXT:bootstrap_package/Configuration/TypoScript/Helper/" extensions="typoscript">
+## Include content elements
+#<INCLUDE_TYPOSCRIPT: source="DIR:EXT:bootstrap_package/Configuration/TypoScript/ContentElement/" extensions="typoscript">
+## Include configuration
+#<INCLUDE_TYPOSCRIPT: source="DIR:EXT:bootstrap_package/Configuration/TypoScript/Configuration" extensions="typoscript">
+
+## Include helpers from Headless Gridelements
+<INCLUDE_TYPOSCRIPT: source="DIR:EXT:headless_gridelements/Configuration/TypoScript/Helper/" extensions="typoscript">
+## Include content elements
+<INCLUDE_TYPOSCRIPT: source="DIR:EXT:headless_gridelements/Configuration/TypoScript/ContentElement/" extensions="typoscript">
+## Include configuration
+<INCLUDE_TYPOSCRIPT: source="DIR:EXT:headless_gridelements/Configuration/TypoScript/Configuration" extensions="typoscript">
+
+
+## Include helpers
+<INCLUDE_TYPOSCRIPT: source="DIR:EXT:headless_bootstrap_package/Configuration/TypoScript/Helper/" extensions="typoscript">
+## Include content elements
+<INCLUDE_TYPOSCRIPT: source="DIR:EXT:headless_bootstrap_package/Configuration/TypoScript/ContentElement/" extensions="typoscript">
+## Include configuration
+<INCLUDE_TYPOSCRIPT: source="DIR:EXT:headless_bootstrap_package/Configuration/TypoScript/Configuration/" extensions="typoscript">
+
+# overwrite gridelement to get flexform
+
+
+######################
+#### CTYPE: MEDIA ####
+######################
+
+tt_content.audio =< lib.contentElementWithHeader
+tt_content.audio {
+
+    #
+    #    ################
+    #    ### TEMPLATE ###
+    #    ################
+    #    templateName = Media
+    #
+    fields {
+        content {
+            fields {
+                bodytext = TEXT
+                bodytext {
+                    field = bodytext
+                    parseFunc =< lib.parseFunc_links
+                }
+                gallery = TEXT
+                gallery {
+                    dataProcessing {
+                        10 = FriendsOfTYPO3\Headless\DataProcessing\FilesProcessor
+                        10 {
+                            references.fieldName = assets
+                            as = files
+                        }
+                        #20 = FriendsOfTYPO3\Headless\DataProcessing\GalleryProcessor
+                        #20 {
+                        #    maxGalleryWidth = {$styles.content.textmedia.maxW}
+                        #    maxGalleryWidthInText = {$styles.content.textmedia.maxWInText}
+                        #    columnSpacing = {$styles.content.textmedia.columnSpacing}
+                        #    borderWidth = {$styles.content.textmedia.borderWidth}
+                        #    borderPadding = {$styles.content.textmedia.borderPadding}
+                        #    as = gallery
+                        #}
+                    }
+                }
+            }
+        }
+    }
+}
+
+
+#tt_content.media >
+#tt_content.media =< lib.contentElement
+#tt_content.media {
+#
+#    ################
+#    ### TEMPLATE ###
+#    ################
+#    templateName = Media
+#
+#    ##########################
+#    ### DATA PREPROCESSING ###
+#    ##########################
+#    dataProcessing {
+#        10 = TYPO3\CMS\Frontend\DataProcessing\FilesProcessor
+#        10 {
+#            references.fieldName = assets
+#            folders.field = file_folder
+#            sorting.field = filelink_sorting
+#        }
+#
+##        20 = BK2K\BootstrapPackage\DataProcessing\FileFilterProcessor
+##        20 {
+##            allowedFileExtensions = youtube, vimeo
+##        }
+#    }
+#
+#}
+
+
+
+
+lib.appearance = JSON
+lib.appearance {
+    fields {
+        layout = CASE
+        layout {
+            key.field = layout
+
+            default = TEXT
+            default {
+                value = default
+            }
+
+            1 = TEXT
+            1 {
+                value = layout-1
+            }
+
+            2 = TEXT
+            2 {
+                value = layout-2
+            }
+
+            3 = TEXT
+            3 {
+                value = layout-3
+            }
+        }
+
+        frameClass = TEXT
+        frameClass {
+            field = frame_class
+        }
+
+        backgroundColorClass = TEXT
+        frameClass {
+            field = background_color_class
+        }
+
+        spaceBefore = TEXT
+        spaceBefore {
+            field = space_before_class
+        }
+
+        spaceAfter = TEXT
+        spaceAfter {
+            field = space_after_class
+        }
+    }
+}
+
+
+#tt_content.gridelements_pi1 >
+#tt_content.gridelements_pi1 =< lib.contentElementWithHeader
+tt_content.gridelements_pi1 {
+    fields {
+
+        content {
+            fields {
+
+                structure.fields {
+
+					options = JSON
+                    options {
+                        dataProcessing {
+                            10 = BK2K\BootstrapPackage\DataProcessing\FlexFormProcessor
+
+#                            10 = FriendsOfTYPO3\Headless\DataProcessing\FlexFormProcessor
+                           10 {
+                               fieldName = pi_flexform
+                               as = options
+                           }
+                           as = options
+                        }
+                    }
+
+                    pi_flexform = JSON
+                    pi_flexform {
+                        dataProcessing {
+                            10 = BK2K\BootstrapPackage\DataProcessing\FlexFormProcessor
+                            10 {
+                                default {
+                                    as = pi_flexform
+                                }
+                            }
+                        }
+                    }
+				}
+			}
+		}
+	}
+}
+
+tt_content.gridelements_pi1 >
+tt_content.gridelements_pi1 =< lib.contentElementWithHeader
+tt_content.gridelements_pi1 {
+    fields {
+        # Override CE type display
+        type.stdWrap.cObject = TEXT
+        type.stdWrap.cObject.value = structured_content
+
+        content {
+            fields {
+                structure = JSON
+                structure.fields {
+
+                    layout = TEXT
+                    layout {
+                        field = tx_gridelements_backend_layout
+                    }
+
+					# move to headless_bootstrap_package
+					options = JSON
+                    options {
+                        dataProcessing {
+                            10 = BK2K\BootstrapPackage\DataProcessing\FlexFormProcessor
+
+#                            10 = FriendsOfTYPO3\Headless\DataProcessing\FlexFormProcessor
+                           10 {
+                               fieldName = pi_flexform
+                               as = options
+                           }
+                           as = options
+                        }
+                    }
+
+                    pi_flexform = JSON
+                    pi_flexform {
+                        dataProcessing {
+                            10 = BK2K\BootstrapPackage\DataProcessing\FlexFormProcessor
+                            10 {
+                                default {
+                                    as = pi_flexform
+                                }
+                            }
+                        }
+                    }
+
+                    rows = JSON
+                    rows {
+                        dataProcessing {
+                            10 = ITplusX\HeadlessGridelements\DataProcessing\GridChildrenProcessor
+                            10 {
+                                default {
+                                    as = children
+                                }
+                            }
+                        }
+                    }
+
+
+
+                }
+            }
+        }
+    }
+}
+
+# More advanced sorting of elements within CType 'menu_section' so gridelement children are
+# being put right after their parents.
+# Inspired by http://blog.sitegefuehl.de/typo3-inhaltsverzeichnis-section-index-gridelements/
+tt_content.menu_section.fields.content.fields.menu.dataProcessing.10.dataProcessing.20 {
+    where = tt_content.sectionIndex = 1
+    selectFields (
+        tt_content.uid, tt_content.header,
+        ((IFNULL(container.sorting, tt_content.sorting) * 100000000) +
+         (tt_content.tx_gridelements_columns * 10000) +
+         tt_content.sorting) as customSorting
+    )
+    leftjoin = tt_content AS container ON container.uid = tt_content.tx_gridelements_container
+    orderBy = customSorting
+}
