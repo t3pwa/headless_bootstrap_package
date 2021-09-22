@@ -27,6 +27,8 @@
 ## Include configuration
 <INCLUDE_TYPOSCRIPT: source="DIR:EXT:headless_bootstrap_package/Configuration/TypoScript/Configuration/" extensions="typoscript">
 
+
+
 # overwrite gridelement to get flexform
 
 
