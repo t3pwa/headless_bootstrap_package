@@ -1,0 +1,32 @@
+tt_content.external_media =< lib.contentElementWithHeader
+tt_content.external_media {
+    fields {
+        content {
+            fields {
+                bodytext = TEXT
+                bodytext {
+                    field = bodytext
+                    parseFunc =< lib.parseFunc_links
+                }
+                external_media_source = TEXT
+                external_media_source {
+                    field = external_media_source
+                }
+                external_media_ratio = TEXT
+                external_media_ratio {
+                    field = external_media_ratio
+                }
+                gallery = TEXT
+                gallery {
+                    dataProcessing {
+                        10 = FriendsOfTYPO3\Headless\DataProcessing\FilesProcessor
+                        10 {
+                            references.fieldName = assets
+                            as = files
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
