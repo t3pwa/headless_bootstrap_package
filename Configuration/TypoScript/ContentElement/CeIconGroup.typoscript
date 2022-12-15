@@ -1,0 +1,60 @@
+tt_content.icon_group >
+tt_content.icon_group =< lib.contentElementWithHeader
+tt_content.icon_group {
+	#templateName = IconGroup
+    fields {
+        type.stdWrap.cObject = TEXT
+        type.stdWrap.cObject.value = icon_group
+        content {
+            fields {
+
+                items = JSON
+                items {
+
+                    dataProcessing {
+                        10 = BK2K\BootstrapPackage\DataProcessing\FlexFormProcessor
+                        # 10 = FriendsOfTYPO3\Headless\DataProcessing\FlexFormProcessor
+                        10 {
+                             fieldName = tx_bootstrappackage_icon_group_item
+                             removeEmptyEntries = 1
+                        }
+
+
+                        #20 = TYPO3\CMS\Frontend\DataProcessing\DatabaseQueryProcessor
+                        20 = FriendsOfTYPO3\Headless\DataProcessing\DatabaseQueryProcessor
+                        20 {
+                            table = tx_bootstrappackage_icon_group_item
+                            pidInList.field = pid
+                            where {
+                                data = field:uid
+                                intval = 1
+                                wrap = tt_content=|
+                            }
+                            orderBy = sorting
+                            as = items
+
+# ToDo:
+                            dataProcessing {
+                                1628754217 = BK2K\BootstrapPackage\DataProcessing\IconsDataProcessor
+                                1628754217 {
+                                    iconSet.field = icon_set
+                                    iconIdentifier.field = icon_identifier
+                                    iconFileFieldName = icon_file
+                                    as = icon
+                                }
+                            }
+
+# ToDo:
+################################ pi_flexform]  Alignment [align]
+#                                              Columns [columns]
+#                                              Icon Position [icon_position]
+
+
+
+                        } #20
+                    } #dataprocessing
+                } #items
+			} #fields
+		} #content
+    } #fields
+} # icon_group

@@ -1,0 +1,74 @@
+#tt_content.list =< lib.contentElementWithHeader
+#tt_content.list {
+#    fields {
+#        content {
+#            fields {
+#                data = CASE
+#                data {
+#                    key.field = list_type
+#
+##					cartproducts_teaserproducts = USER
+##                    cartproducts_teaserproducts {
+##
+##					    userFunc = TYPO3\CMS\Extbase\Core\Bootstrap->run
+##					    vendorName = Extcode
+##					    extensionName = CartProducts
+##					    pluginName = ProductPartial
+##
+##					    controller = Product
+##					    action = showForm
+##
+##					    settings =< plugin.tx_cartproducts.settings
+##					    persistence =< plugin.tx_cartproducts.persistence
+##					    view =< plugin.tx_cartproducts.view
+##					    update =< plugin.tx_cartproducts.update
+##					}
+#
+#					cartproducts_products = USER
+#                    cartproducts_products {
+#
+#				        userFunc = TYPO3\CMS\Extbase\Core\Bootstrap->run
+#                        vendorName = Extcode
+#                        extensionName = CartProducts
+#                        pluginName = ProductPartial
+#
+#                        controller = Product
+#                        action = showForm
+#
+#                        product = TEXT
+#                        product.value.dataWrap = {field: productUid}
+#
+##                        settings =< plugin.tx_cartproducts.settings
+##                        persistence =< plugin.tx_cartproducts.persistence
+#                        view =< plugin.tx_cartproducts.view
+##                        update =< plugin.tx_cartproducts.update
+#
+#					}
+#
+#
+##					cart_cart = USER
+##                    cart_cart {
+##					    userFunc = TYPO3\CMS\Extbase\Core\Bootstrap->run
+##					    vendorName = Extcode
+##					    extensionName = CartProducts
+##					    pluginName = ProductPartial
+##
+##					    controller = Product
+##					    action = showForm
+##
+##					    product = TEXT
+##					    product.value.dataWrap = {field: productUid}
+##
+##					    settings =< plugin.tx_cartproducts.settings
+##					    persistence =< plugin.tx_cartproducts.persistence
+##					    view =< plugin.tx_cartproducts.view
+##					    update =< plugin.tx_cartproducts.update
+##				    }
+#
+#                }
+#            }
+#        }
+#    }
+#
+#
+#}

@@ -1,0 +1,59 @@
+###########################################
+#### CTYPE: BOOTSTRAP PACKAGE TEXTICON ####
+###########################################
+
+tt_content.texticon >
+tt_content.texticon =< lib.contentElement
+tt_content.texticon {
+
+    ################
+    ### TEMPLATE ###
+    ################
+    templateName = Texticon
+
+
+    fields {
+        type.stdWrap.cObject = TEXT
+        type.stdWrap.cObject.value = text_icon
+        content {
+            fields {
+				bodytext = TEXT
+				bodytext {
+				   field = bodytext
+				   parseFunc =< lib.parseFunc_links
+				}
+				files = JSON
+				files {
+
+#                   icon_set = JSON
+#                   icon_set {
+#                     field = icon_set
+#                     as = icon_set
+#                   }
+
+                   dataProcessing {
+	                   #20 = TYPO3\CMS\Frontend\DataProcessing\FilesProcessor
+	                   #20 = BK2K\BootstrapPackage\DataProcessing\FilesProcessor
+	                   #20 {
+	                   #    references.fieldName = image
+	                   #    as = image
+	                   #}
+	                   1628754217 = BK2K\BootstrapPackage\DataProcessing\IconsDataProcessor
+	                   #1628754217 = FriendsOfTYPO3\Headless\DataProcessing\IconsDataProcessor
+	                   1628754217 {
+	                       #iconSet.field = icon_set
+	                       iconSet.field =
+	                       #iconIdentifier.field = icon
+	                       iconIdentifier.field =
+	                       #iconFileFieldName = icon_file
+	                       iconFileFieldName = icon
+	                       as = icon
+	                   }
+	                   #as = icon
+				   }
+                   as = icon
+				}
+			}
+		}
+	}
+}

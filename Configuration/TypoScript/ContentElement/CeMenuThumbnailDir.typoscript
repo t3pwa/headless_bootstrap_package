@@ -1,0 +1,85 @@
+tt_content.menu_thumbnail_dir >
+tt_content.menu_thumbnail_dir =< lib.contentElementWithHeader
+tt_content.menu_thumbnail_dir {
+	templateName = MenuThumbnailDir
+    fields {
+        type.stdWrap.cObject = TEXT
+        type.stdWrap.cObject.value = menu_thumbnail_dir
+        content {
+            fields {
+				# flexforms seems only to work with items?
+                pi_flexform = JSON
+                pi_flexform {
+                    dataProcessing {
+                        10 = BK2K\BootstrapPackage\DataProcessing\FlexFormProcessor
+                        10 {
+                          fieldName = pi_flexform
+                          as = pi_flexform
+                          #as = options
+                        }
+                    }
+                    as = pi_flexform
+                    #as = options
+                }
+
+                items = JSON
+                items {
+				    dataProcessing {
+				        10 = BK2K\BootstrapPackage\DataProcessing\FlexFormProcessor
+                        #20 = TYPO3\CMS\Frontend\DataProcessing\MenuProcessor
+                        20 = FriendsOfTYPO3\Headless\DataProcessing\MenuProcessor
+				        20 {
+				            special = directory
+				            special.value.field = pages
+				            includeNotInMenu = 1
+
+				            appendData = 1
+                            overwriteMenuLevelConfig {
+                                stdWrap.cObject {
+                                    100 = TEXT
+                                    100 {
+                                        field = abstract
+                                        wrap = ,"abstract":"|"
+                                    }
+                                }
+                            }
+
+				            as = items
+
+				            dataProcessing {
+	                            #10 = TYPO3\CMS\Frontend\DataProcessing\FilesProcessor
+	                            10 = FriendsOfTYPO3\Headless\DataProcessing\FilesProcessor
+	                            10 {
+	                                #references.fieldName = thumbnail
+	                                references.fieldName = media
+	                                as = thumbnail
+	                                #as = media
+	                            }
+	                            #as = media
+	                            as = thumbnail
+	                        }
+
+				        }
+
+				        #90 = TYPO3\CMS\Frontend\DataProcessing\DatabaseQueryProcessor
+				        #90 {
+				        #    if {
+				        #        isTrue.field = accessibility_bypass
+				        #    }
+				        #    table = tt_content
+				        #    pidInList = this
+				        #    orderBy = sorting
+				        #    max = 1
+				        #    where {
+				        #        dataWrap = colPos = {field:colPos} AND sorting > {field:sorting}
+				        #    }
+				        #    as = nextContentElement
+				        #}
+				        #as = items
+				    }
+	            }
+			}
+		}
+	}
+
+}

@@ -1,0 +1,44 @@
+###########################
+#### CTYPE: CE GALLERY ####
+###########################
+
+tt_content.gallery >
+tt_content.gallery =< lib.contentElement
+tt_content.gallery {
+
+    ################
+    ### TEMPLATE ###
+    ################
+    templateName = CeGallery
+
+    ##########################
+    ### DATA PREPROCESSING ###
+    ##########################
+
+	fields {
+	    type.stdWrap.cObject = TEXT
+	    type.stdWrap.cObject.value = gallery
+	    content {
+	        fields {
+		        gallery = TEXT
+                gallery {
+                    dataProcessing {
+                        10 = FriendsOfTYPO3\Headless\DataProcessing\FilesProcessor
+                        10 {
+                            references.fieldName = image
+                            folders.field = file_folder
+                            sorting.field = filelink_sorting
+                            as = files
+                        }
+
+                        20 = BK2K\BootstrapPackage\DataProcessing\FileFilterProcessor
+                        20 {
+                            predefinedList = image
+                        }
+                        as = file
+                    }
+                }
+		    }
+	    }
+	}
+}

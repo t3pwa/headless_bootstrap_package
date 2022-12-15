@@ -1,0 +1,190 @@
+tt_content.menu_card_list >
+tt_content.menu_card_list =< lib.contentElementWithHeader
+tt_content.menu_card_list {
+	templateName = MenuCardList
+    fields {
+		type.stdWrap.cObject = TEXT
+        type.stdWrap.cObject.value = menu_card_list
+		content {
+			fields {
+				pi_flexform = JSON
+                pi_flexform {
+                    dataProcessing {
+                        10 = BK2K\BootstrapPackage\DataProcessing\FlexFormProcessor
+                        10 {
+                          fieldName = pi_flexform
+                          as = pi_flexform
+                        }
+                    }
+                    as = pi_flexform
+                }
+		        items = JSON
+		        items {
+				    dataProcessing {
+				        10 = BK2K\BootstrapPackage\DataProcessing\FlexFormProcessor
+				        20 = FriendsOfTYPO3\Headless\DataProcessing\MenuProcessor
+				        20 {
+				            special = list
+				            special.value.field = pages
+				            includeNotInMenu = 1
+
+				            appendData = 1
+                            #special = directory
+                            #special.value.field = pages
+                            overwriteMenuLevelConfig {
+
+                                stdWrap.cObject {
+                                    100 = TEXT
+                                    100 {
+                                        field = abstract
+                                        wrap = ,"abstract":"|"
+                                    }
+                                }
+
+
+                            }
+
+
+							as = items
+
+				            dataProcessing {
+				                ####10 = TYPO3\CMS\Frontend\DataProcessing\FilesProcessor
+								10 = FriendsOfTYPO3\Headless\DataProcessing\FilesProcessor
+				                10 {
+				                    #references.fieldName = thumbnail
+				                    references.fieldName = media
+				                    #as = thumbnail
+				                    as = media
+				#                    if {
+				#                        isTrue = {$plugin.bootstrap_package_contentelements.menu_card.thumbnail.enable}
+				#                    }
+				                }
+
+#				                1628754217 = BK2K\BootstrapPackage\DataProcessing\IconsDataProcessor
+#				                1628754217 {
+#				                    iconSet.field = nav_icon_set
+#				                    iconIdentifier.field = nav_icon_identifier
+#				                    iconFileFieldName = nav_icon
+#				                    as = icon
+#				#                    if {
+#				#                        isTrue = {$plugin.bootstrap_package_contentelements.menu_card.icon.enable}
+#				#                    }
+#				                }
+
+								as = items
+				            } #dataprocessing
+
+				        } #20
+
+				#        90 = TYPO3\CMS\Frontend\DataProcessing\DatabaseQueryProcessor
+				#        90 {
+				#            if {
+				#                isTrue.field = accessibility_bypass
+				#            }
+				#            table = tt_content
+				#            pidInList = this
+				#            orderBy = sorting
+				#            max = 1
+				#            where {
+				#                dataWrap = colPos = {field:colPos} AND sorting > {field:sorting}
+				#            }
+				#            as = nextContentElement
+				#        }
+
+						as = items
+				    } #dataprocessing
+
+				} #items
+			}
+		}
+	}
+}
+
+
+#########################
+### RESPONSIVE IMAGES ###
+#########################
+#lib.contentElement.settings.responsiveimages.contentelements {
+#    menu_card_list {
+#        1 {
+#            corrections {
+#                default = 2
+#                xlarge = 2
+#                large = 2
+#                medium = 2
+#                small = 2
+#                extrasmall = 2
+#            }
+#        }
+#        2 {
+#            multiplier {
+#                default = 0.5
+#                xlarge = 0.5
+#                large = 0.5
+#                medium = 0.5
+#                small = 0.5
+#            }
+#            gutters {
+#                default = 20
+#                xlarge = 20
+#                large = 20
+#                medium = 20
+#                small = 20
+#            }
+#            corrections {
+#                default = 2
+#                xlarge = 2
+#                large = 2
+#                medium = 2
+#                small = 2
+#                extrasmall = 2
+#            }
+#        }
+#        3 {
+#            multiplier {
+#                default = 0.3333
+#                xlarge = 0.3333
+#                large = 0.3333
+#                medium = 0.3333
+#           }
+#            gutters {
+#               default = 20
+#                xlarge = 20
+#                large = 20
+#                medium = 20
+#            }
+#            corrections {
+#                default = 2
+#                xlarge = 2
+#                large = 2
+#                medium = 2
+#                small = 2
+#                extrasmall = 2
+#            }
+#        }
+#        4 {
+#            multiplier {
+#                default = 0.25
+#                xlarge = 0.5
+#                large = 0.5
+#                medium = 0.5
+#                small = 0.5
+#            }
+#            gutters {
+#                default = 20
+#                xlarge = 20
+#                large = 20
+#                medium = 20
+#                small = 20
+#            }
+#            corrections {
+#                default = 2
+#                xlarge = 2
+#                large = 2
+#                medium = 2
+#               small = 2
+#               extrasmall = 2
+#           }
+#       }
+#   }
+#}

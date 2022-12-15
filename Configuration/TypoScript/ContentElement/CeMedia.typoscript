@@ -1,0 +1,44 @@
+tt_content.media =< lib.contentElementWithHeader
+tt_content.media {
+  fields {
+
+    type.stdWrap.cObject = TEXT
+    type.stdWrap.cObject.value = media
+
+
+    content {
+      fields {
+        filelinkSorting = TEXT
+        filelinkSorting {
+          field = filelink_sorting
+        }
+
+        imagecols = TEXT
+        imagecols {
+          field = imagecols
+        }
+
+        items {
+          dataProcessing {
+
+            #org from other headless bstrap package
+            #10 = FriendsOfTYPO3Headless\HeadlessBootstrapPackage\DataProcessing\FilesProcessor
+            10 = FriendsOfTYPO3\Headless\DataProcessing\FilesProcessor
+
+            10 {
+              references.fieldName = assets
+              folders.field = file_folder
+              sorting.field = filelink_sorting
+              as = items
+            }
+
+            20 = BK2K\BootstrapPackage\DataProcessing\FileFilterProcessor
+            20 {
+              allowedFileExtensions = youtube, vimeo
+            }
+          }
+        }
+      }
+    }
+  }
+}

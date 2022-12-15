@@ -1,0 +1,78 @@
+lib.containerElements {
+    renderContent >
+    renderContent = CONTENT
+    renderContent {
+        table = tt_content
+        select {
+            uidInList {
+                field = uid
+                override.field = l18n_parent
+            }
+            pidInList = 0
+        }
+    }
+}
+
+
+#lib.gridelements.defaultGridSetup {
+#lib.containerContentElement =< lib.contentElement
+#
+#    # Seperate grid column content with a seperator
+#    columns.default.renderObj.stdWrap.innerWrap = |###BREAK###
+#
+#    cObject =< lib.contentElementWithHeader
+#
+#    # Add custom fields
+#    cObject.fields {
+#
+#        # Override CE type
+#        type.stdWrap.cObject = TEXT
+#        type.stdWrap.cObject.value = structured_content
+#
+#        content {
+#            fields {
+#                structure = JSON
+#                structure.fields {
+##                    layout = TEXT
+##                    layout {
+##                        field = tx_gridelements_backend_layout
+##                    }
+#
+##                    layout2 = TEXT
+##                    layout2 {
+##                        field = layout
+##                    }
+#
+##                    children = TEXT
+##                    children {
+##                        field = tx_gridelements_children
+##                    }
+#
+##                    container = TEXT
+##                    container {
+##                        field = tx_gridelements_container
+#                    }
+#
+##                    columns = TEXT
+##                    columns {
+##                        field = tx_gridelements_columns
+##                    }
+#
+#                    rows = JSON
+#                    rows {
+#                        dataProcessing {
+#                            10 = ITplusX\HeadlessGridelements\DataProcessing\GridChildrenProcessor
+#                            10 {
+#                                default {
+#                                    as = children
+#                                }
+#                            }
+#                        }
+#                    }
+#                    ####
+#
+#                }
+#            }
+#        }
+#    }
+#}

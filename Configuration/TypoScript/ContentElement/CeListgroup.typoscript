@@ -1,0 +1,32 @@
+tt_content.listgroup =< lib.contentElement
+#tt_content.listgroup =< lib.contentElementWithHeader
+tt_content.listgroup {
+
+#  templateName = Listgroup
+
+    fields {
+        type.stdWrap.cObject = TEXT
+        type.stdWrap.cObject.value = listgroup
+        content {
+            fields {
+
+				items = JSON
+	            items {
+
+	                dataProcessing {
+	                    10 = TYPO3\CMS\Frontend\DataProcessing\SplitProcessor
+
+	                    10 {
+	                        fieldName = bodytext
+	                        removeEmptyEntries = 1
+	                        as = items
+	                    }
+	                    as = items
+	                }
+
+				}
+
+            }
+        }
+    }
+}

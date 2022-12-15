@@ -1,0 +1,43 @@
+#tt_content.ce_columns2 >
+tt_content.ce_columns2 =< lib.contentElement
+tt_content.ce_columns2 {
+  fields {
+
+   type.stdWrap.cObject = TEXT
+   type.stdWrap.cObject.value = columns2
+
+    content {
+      fields {
+
+        left = TEXT
+        left {
+          dataProcessing {
+            #10 = Fanor51\HeadlessContainerSupport\DataProcessing\HeadlessContainerProcessor
+            10 = B13\Container\DataProcessing\ContainerProcessor
+            #10 = FriendsOfTYPO3\Headless\DataProcessing\HeadlessContainerProcessor
+            #10 = FriendsOfTYPO3\HeadlessBootstrapPackage\DataProcessing\HeadlessContainerProcessor
+            10 {
+              colPos = 201
+              as = left
+            }
+          }
+        }
+
+        right = TEXT
+        right {
+          dataProcessing {
+            #10 = Fanor51\HeadlessContainerSupport\DataProcessing\HeadlessContainerProcessor
+            10 = B13\Container\DataProcessing\ContainerProcessor
+            #10 = FriendsOfTYPO3\Headless\DataProcessing\HeadlessContainerProcessor
+            #10 = FriendsOfTYPO3\HeadlessBootstrapPackage\DataProcessing\HeadlessContainerProcessor
+            10 {
+              colPos = 202
+              as = right
+            }
+          }
+        }
+
+      }
+    }
+  }
+}

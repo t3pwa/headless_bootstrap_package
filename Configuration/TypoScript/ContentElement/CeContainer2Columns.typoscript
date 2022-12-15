@@ -1,0 +1,38 @@
+#tt_content.container_2_columns >
+tt_content.container_2_columns =< lib.contentElement
+#tt_content.container_2_columns =< lib.containerContentElement
+tt_content.container_2_columns {
+  fields {
+
+   type.stdWrap.cObject = TEXT
+   type.stdWrap.cObject.value = container_2_columns
+
+    content {
+      fields {
+
+        left = TEXT
+        left {
+          dataProcessing {
+            10 = B13\Container\DataProcessing\ContainerProcessor
+            10 {
+              colPos = 201
+              as = left
+            }
+          }
+        }
+
+        right = TEXT
+        right {
+          dataProcessing {
+            10 = B13\Container\DataProcessing\ContainerProcessor
+            10 {
+              colPos = 202
+              as = right
+            }
+          }
+        }
+
+      }
+    }
+  }
+}

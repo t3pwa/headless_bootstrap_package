@@ -1,0 +1,75 @@
+tt_content.menu_pages >
+tt_content.menu_pages =< lib.contentElement
+#tt_content.menu_pages =< lib.contentElementWithHeader
+tt_content.menu_pages {
+
+    templateName = MenuPAges
+
+	fields {
+        type.stdWrap.cObject = TEXT
+        type.stdWrap.cObject.value = menu_pages
+		content {
+			fields {
+
+		        menu = JSON
+		        menu {
+				    dataProcessing {
+				        10 = BK2K\BootstrapPackage\DataProcessing\FlexFormProcessor
+				        #20 = TYPO3\CMS\Frontend\DataProcessing\MenuProcessor
+				        20 = FriendsOfTYPO3\Headless\DataProcessing\MenuProcessor
+				        20 {
+				            special = list
+				            special.value.field = pages
+				            includeNotInMenu = 1
+
+				            dataProcessing {
+				                #10 = TYPO3\CMS\Frontend\DataProcessing\FilesProcessor
+								10 = FriendsOfTYPO3\Headless\DataProcessing\FilesProcessor
+				                10 {
+				                    #references.fieldName = thumbnail
+				                    references.fieldName = media
+				                    #as = thumbnail
+				                    as = media
+				#                    if {
+				#                        isTrue = {$plugin.bootstrap_package_contentelements.menu_card.thumbnail.enable}
+				#                    }
+				                }
+				#                1628754217 = BK2K\BootstrapPackage\DataProcessing\IconsDataProcessor
+				#                1628754217 {
+				#                    iconSet.field = nav_icon_set
+				#                    iconIdentifier.field = nav_icon_identifier
+				#                    iconFileFieldName = nav_icon
+				#                    as = icon
+				##                    if {
+				##                        isTrue = {$plugin.bootstrap_package_contentelements.menu_card.icon.enable}
+				##                    }
+				#                }
+
+							}
+
+							as = menu
+				        } #20
+
+				#        90 = TYPO3\CMS\Frontend\DataProcessing\DatabaseQueryProcessor
+				#        90 {
+				#            if {
+				#                isTrue.field = accessibility_bypass
+				#            }
+				#            table = tt_content
+				#            pidInList = this
+				#            orderBy = sorting
+				#            max = 1
+				#            where {
+				#                dataWrap = colPos = {field:colPos} AND sorting > {field:sorting}
+				#            }
+				#            as = nextContentElement
+				#        }
+
+						as = menu
+					}
+				}
+			}
+		}
+	}
+}
+

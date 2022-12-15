@@ -1,0 +1,45 @@
+########################################
+#### CTYPE: BOOTSTRAP PACKAGE Quote ####
+########################################
+
+tt_content.quote >
+tt_content.quote =< lib.contentElement
+#tt_content.quote =< lib.contentElementWithHeader
+tt_content.quote {
+
+    ################
+    ### TEMPLATE ###
+    ################
+    templateName = Quote
+
+     fields {
+        content {
+            fields {
+
+                header = TEXT
+                header {
+                    field = header
+                    #parseFunc =< lib.parseFunc_links
+                }
+
+                bodytext = TEXT
+                bodytext {
+                    field = bodytext
+                    #parseFunc =< lib.parseFunc_links
+                }
+
+                quote_source = TEXT
+                quote_source {
+                    field = quote_source
+                }
+
+                quote_link = TEXT
+                quote_link {
+                    field = quote_link
+                    parseFunc =< lib.parseFunc_links
+                }
+
+			}
+		}
+	}
+}

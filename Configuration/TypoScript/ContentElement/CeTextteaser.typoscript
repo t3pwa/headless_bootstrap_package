@@ -1,0 +1,37 @@
+tt_content.textteaser >
+tt_content.textteaser =< lib.contentElement
+tt_content.textteaser {
+
+    ################
+    ### TEMPLATE ###
+    ################
+    templateName = Textteaser
+
+    fields {
+            type.stdWrap.cObject = TEXT
+            type.stdWrap.cObject.value = text_teaser
+            content {
+                fields {
+	                header = TEXT
+                    header {
+                        field = header
+                        #parseFunc =< lib.parseFunc_links
+                    }
+
+	                bodytext = TEXT
+	                bodytext {
+	                    field = bodytext
+	                    parseFunc =< lib.parseFunc_links
+	                }
+	                teaser = TEXT
+                    teaser {
+                        field = teaser
+                        parseFunc =< lib.parseFunc_links
+                    }
+
+				}
+			}
+	}
+
+}
+
