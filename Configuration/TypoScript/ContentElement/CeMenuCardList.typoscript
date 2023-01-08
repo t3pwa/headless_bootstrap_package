@@ -26,23 +26,21 @@ tt_content.menu_card_list {
 				        20 {
 				            special = list
 				            special.value.field = pages
-				            includeNotInMenu = 1
+#				            includeNotInMenu = 1
 
 				            appendData = 1
                             #special = directory
-                            #special.value.field = pages
-                            overwriteMenuLevelConfig {
-
-                                stdWrap.cObject {
-                                    100 = TEXT
-                                    100 {
-                                        field = abstract
-                                        wrap = ,"abstract":"|"
-                                    }
-                                }
 
 
-                            }
+#                            overwriteMenuLevelConfig {
+#                                stdWrap.cObject {
+#                                    100 = TEXT
+#                                    100 {
+#                                        field = abstract
+#                                        wrap = ,"abstract":"|"
+#                                    }
+#                                }
+#                            }
 
 
 							as = items

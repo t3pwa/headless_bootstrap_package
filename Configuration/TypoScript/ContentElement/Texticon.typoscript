@@ -22,8 +22,41 @@ tt_content.texticon {
 				   field = bodytext
 				   parseFunc =< lib.parseFunc_links
 				}
-				files = JSON
-				files {
+
+				header = TEXT
+                header {
+                   field = header
+                   #parseFunc =< lib.parseFunc_links
+                }
+
+                icon_position = TEXT
+                icon_position {
+                   field = icon_position
+                }
+
+                icon_type = TEXT
+                icon_type {
+                   field = icon_type
+                }
+
+                icon_size = TEXT
+                icon_size {
+                   field = icon_size
+                }
+
+                icon_set = TEXT
+                icon_set {
+                   field = icon_set
+                }
+
+                icon_identifier = TEXT
+                icon_identifier {
+                   field = icon
+                }
+
+
+				icon = JSON
+				icon {
 
 #                   icon_set = JSON
 #                   icon_set {
@@ -31,28 +64,39 @@ tt_content.texticon {
 #                     as = icon_set
 #                   }
 
-                   dataProcessing {
-	                   #20 = TYPO3\CMS\Frontend\DataProcessing\FilesProcessor
-	                   #20 = BK2K\BootstrapPackage\DataProcessing\FilesProcessor
-	                   #20 {
-	                   #    references.fieldName = image
-	                   #    as = image
-	                   #}
-	                   1628754217 = BK2K\BootstrapPackage\DataProcessing\IconsDataProcessor
-	                   #1628754217 = FriendsOfTYPO3\Headless\DataProcessing\IconsDataProcessor
-	                   1628754217 {
-	                       #iconSet.field = icon_set
-	                       iconSet.field =
-	                       #iconIdentifier.field = icon
-	                       iconIdentifier.field =
-	                       #iconFileFieldName = icon_file
-	                       iconFileFieldName = icon
-	                       as = icon
-	                   }
-	                   #as = icon
+					dataProcessing {
+						#20 = TYPO3\CMS\Frontend\DataProcessing\FilesProcessor
+						#20 = BK2K\BootstrapPackage\DataProcessing\FilesProcessor
+						#20 {
+						#    references.fieldName = image
+						#    as = image
+						#}
+
+						1628754217 = BK2K\BootstrapPackage\DataProcessing\IconsDataProcessor
+						#1628754217 = FriendsOfTYPO3\Headless\DataProcessing\IconsDataProcessor
+
+						1628754217 {
+							#iconSet.field = icon_set
+							#iconIdentifier.field = icon
+							#iconFileFieldName = icon_file
+
+							iconSetFieldName = icon_set
+							iconIdentifierFieldName = icon
+							iconFileFieldName = icon_file
+
+							as = icon
+						}
+						as = icon
 				   }
                    as = icon
 				}
+
+                #icon = TEXT
+                #icon {
+                #   field = icon
+                #}
+
+
 			}
 		}
 	}
